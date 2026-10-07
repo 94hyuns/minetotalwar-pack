@@ -1,0 +1,21 @@
+hash-format = "sha256"
+
+[[files]]
+file = "mods/fabric-api.pw.toml"
+hash = "0c2a00cdbcf84f32ed8c6232e94cadb586bf1280d6b922818db808c16c6d8a77"
+metafile = true
+
+[[files]]
+file = "mods/geckolib.pw.toml"
+hash = "dea7dadca619d0d1d26956c59e5ce70deadb0b6688ddd19912b4cf85a5e0e0a9"
+metafile = true
+
+[[files]]
+file = "mods/minetotalwar.pw.toml"
+hash = "71eb25d049209d3176514459cde49f0b25104a64ce2a681f30a57c9631b865cf"
+metafile = true
+
+[[files]]
+file = "mods/owo-lib.pw.toml"
+hash = "01cce2adecdc5e33fba69ff99c5a87f847733a0238f8e94ad2c9841cb26ec2ba"
+metafile = true

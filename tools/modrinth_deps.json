@@ -1,0 +1,43 @@
+{
+ "fabric-api": {
+  "project_id": "P7dR8mSH",
+  "title": "Fabric API",
+  "version_id": "6qAuTtLR",
+  "version_number": "0.141.6+1.21.11",
+  "filename": "fabric-api-0.141.6+1.21.11.jar",
+  "url": "https://cdn.modrinth.com/data/P7dR8mSH/versions/6qAuTtLR/fabric-api-0.141.6%2B1.21.11.jar",
+  "sha1": "c98467cbbaf4d197377266795ae015f4130d65b6",
+  "sha512": "852d3682c4f353fd0ca86546af8578513e8bcf628377fa9d49c556bc59c5024c69ab56c92fc6dfba11fed19e4316a3f5636e7e07fd3d96f7043b531aef59b637",
+  "size": 2426039,
+  "deps": []
+ },
+ "owo-lib": {
+  "project_id": "ccKDOlHs",
+  "title": "o\u03c9o (owo-lib)",
+  "version_id": "33Ei8Thm",
+  "version_number": "0.13.0+1.21.11",
+  "filename": "owo-lib-0.13.0+1.21.11.jar",
+  "url": "https://cdn.modrinth.com/data/ccKDOlHs/versions/33Ei8Thm/owo-lib-0.13.0%2B1.21.11.jar",
+  "sha1": "5baf520ec1e69210ee430a8413a6493cc402764d",
+  "sha512": "acdd14f068a1751ec9e9baa4c6febc1a807a522ada80c2d999abf07e4a5693892fc92497f13043fbb7fc6e04c1eb42fb59a364a6ef813302f60833355a489c2e",
+  "size": 2254955,
+  "deps": [
+   [
+    "P7dR8mSH",
+    "required"
+   ]
+  ]
+ },
+ "geckolib": {
+  "project_id": "8BmcQJ2H",
+  "title": "Geckolib",
+  "version_id": "G1BvHQDL",
+  "version_number": "5.4.5",
+  "filename": "geckolib-fabric-1.21.11-5.4.5.jar",
+  "url": "https://cdn.modrinth.com/data/8BmcQJ2H/versions/G1BvHQDL/geckolib-fabric-1.21.11-5.4.5.jar",
+  "sha1": "41cd2e142e48a8b6604d85764a6466fe5edb70c3",
+  "sha512": "e3fec3a07fd2a39af287cfa682f531913a6b82af5c23b60a231e8586ed1c5b1d2857f6714fa069315a1d7366c0d148d167178a9531b59629d488eb1cace6c97e",
+  "size": 822664,
+  "deps": []
+ }
+}
