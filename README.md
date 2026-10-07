@@ -54,6 +54,16 @@
 
 의존 모드(Fabric API 등)를 올릴 때는 `tools/modrinth_deps.json` 과 `mods/<이름>.pw.toml` 을 함께 바꿉니다. (packwiz 를 설치했다면 `packwiz modrinth update <이름>` 뒤 `python tools/build_pack.py` 로 해시만 다시 맞춰도 됩니다.)
 
+### 서버 세우기
+
+서버를 둘 빈 폴더에서 `tools/server_setup.ps1` 을 실행합니다(Java 21 필요).
+
+```powershell
+powershell -ExecutionPolicy Bypass -File server_setup.ps1 -Dir C:\mtw-server -Xmx 10G
+```
+
+Fabric 서버 런처와 packwiz-installer-bootstrap 을 받고 `start.bat` 을 만듭니다. `start.bat` 은 켤 때마다 이 저장소의 `pack.toml` 기준으로 서버 `mods` 를 맞춘 뒤 서버를 시작하므로, **서버 업데이트 = release.ps1 → start.bat 재시작**입니다. 첫 실행 뒤 `eula.txt` 를 직접 `eula=true` 로 바꿔야 합니다. `server.properties` 는 화이트리스트 켜짐으로 생성되니 콘솔에서 `whitelist add <닉네임>` 하세요.
+
 ### 처음 한 번: GitHub 설정
 
 1. GitHub 에 **공개** 저장소 `minetotalwar-pack` 을 만들고 이 폴더를 푸시합니다.
