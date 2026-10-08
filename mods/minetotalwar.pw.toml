@@ -1,8 +1,8 @@
 name = "영지전"
-filename = "minetotalwar-1.0.2.jar"
+filename = "minetotalwar-1.0.3.jar"
 side = "both"
 
 [download]
-url = "https://github.com/94hyuns/minetotalwar-pack/releases/download/v1.0.2/minetotalwar-1.0.2.jar"
+url = "https://github.com/94hyuns/minetotalwar-pack/releases/download/v1.0.3/minetotalwar-1.0.3.jar"
 hash-format = "sha512"
-hash = "e1c6b233934f34a22c54e652e31826a2ec1a87eccb754e25b6372523c73b26d46f71ed7083a0d1cedbd543b80ca97a229e28a886d1b86ce2dda930044cadb276"
+hash = "8fe13901fb0ddd40cf00ef7423f045ae7ed9ea122545242e3e527be754fb3325493caf8eff36c9ebd3fd11ef69c7d9684dda01c4b39e4fda5114d0efc43656e5"
