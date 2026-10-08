@@ -19,9 +19,10 @@ $jarName = Split-Path -Leaf $Jar
 $mrpack = Get-ChildItem dist\*-$Version.mrpack | Select-Object -First 1
 if ($null -eq $mrpack) { throw "mrpack 이 생성되지 않음" }
 
-git add pack.toml index.toml mods
-git commit -m "v$Version"
-git push
+cmd /c "git add pack.toml index.toml mods 2>&1"
+cmd /c "git commit -m v$Version 2>&1"
+cmd /c "git push 2>&1"
+if ($LASTEXITCODE -ne 0) { throw "git push 실패" }
 
 gh release create "v$Version" "dist\$jarName" $mrpack.FullName --title "영지전 $Version" --notes "영지전 모드 $Version. Prism(packwiz) 사용자는 자동 갱신, Modrinth 앱은 mrpack 다시 가져오기."
 Write-Host "완료: https://github.com/$(gh repo view --json nameWithOwner -q .nameWithOwner)/releases/tag/v$Version"
