@@ -140,7 +140,7 @@ def build_mrpack():
         "dependencies": {"minecraft": MINECRAFT, "fabric-loader": FABRIC_LOADER},
     }
     os.makedirs(DIST, exist_ok=True)
-    out = os.path.join(DIST, f"{PACK_NAME}-{version}.mrpack")
+    out = os.path.join(DIST, f"minetotalwar-{version}.mrpack")   # GitHub 가 자산 이름의 한글을 지우므로 ASCII 로
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         z.writestr("modrinth.index.json", json.dumps(index, ensure_ascii=False, indent=2))
         overrides = os.path.join(ROOT, "overrides")

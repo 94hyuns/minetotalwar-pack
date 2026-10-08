@@ -31,7 +31,7 @@
 
 ### 다른 방법: Modrinth 앱 (업데이트는 수동)
 
-[Modrinth App](https://modrinth.com/app) → **+** → **파일에서 가져오기** → 최신 [Release](https://github.com/94hyuns/minetotalwar-pack/releases/latest) 의 `영지전-<버전>.mrpack`.
+[Modrinth App](https://modrinth.com/app) → **+** → **파일에서 가져오기** → 최신 [Release](https://github.com/94hyuns/minetotalwar-pack/releases/latest) 의 `minetotalwar-<버전>.mrpack`.
 모드가 바뀌면 새 mrpack 을 받아 다시 가져와야 합니다. 그래서 Prism 방식을 권장합니다.
 
 ### 문제가 생기면
@@ -49,14 +49,20 @@
 .\tools\release.ps1 -Version 1.0.1 -Jar C:\Users\vkghk\MineTotalWar\build\libs\minetotalwar-1.0.1.jar
 ```
 
-스크립트가 하는 일: jar 해시를 재서 `mods/minetotalwar.pw.toml` 갱신 → `pack.toml` 버전 올림 → `index.toml` 해시 갱신 → `dist/영지전-<버전>.mrpack` 생성 → 커밋·푸시 → GitHub Release `v<버전>` 에 jar 와 mrpack 업로드.
+스크립트가 하는 일: jar 해시를 재서 `mods/minetotalwar.pw.toml` 갱신 → `pack.toml` 버전 올림 → `index.toml` 해시 갱신 → `dist/minetotalwar-<버전>.mrpack` 생성 → 커밋·푸시 → GitHub Release `v<버전>` 에 jar 와 mrpack 업로드.
 푸시가 끝나면 GitHub Pages 가 1~2분 안에 새 `pack.toml` 을 내보내고, 친구들은 다음 실행 때 자동으로 받습니다.
 
 의존 모드(Fabric API 등)를 올릴 때는 `tools/modrinth_deps.json` 과 `mods/<이름>.pw.toml` 을 함께 바꿉니다. (packwiz 를 설치했다면 `packwiz modrinth update <이름>` 뒤 `python tools/build_pack.py` 로 해시만 다시 맞춰도 됩니다.)
 
 ### 서버 세우기
 
-서버를 둘 빈 폴더에서 `tools/server_setup.ps1` 을 실행합니다(Java 21 필요).
+**우분투**(운영 서버, 기존 Paper 와 나란히): `tools/server_setup.sh` 를 서버에 올려 실행합니다. 기본값 `~/minetotalwar`, 포트 **25566**, 8G, tmux 세션 `mtw`.
+
+```bash
+bash server_setup.sh ~/minetotalwar 25566 8G
+```
+
+**윈도우**: 서버를 둘 빈 폴더에서 `tools/server_setup.ps1` 을 실행합니다(Java 21 필요).
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File server_setup.ps1 -Dir C:\mtw-server -Xmx 10G
