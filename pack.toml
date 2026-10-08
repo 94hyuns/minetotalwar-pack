@@ -1,12 +1,12 @@
 name = "영지전"
 author = "94hyuns"
-version = "1.0.6"
+version = "1.0.7"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "e1c2d66162ebc005a91de0791003e6de1ff94d580045aa55cc16b37bf78dfd53"
+hash = "ef6951a508ff5cbf2995ef861f6a18a80738fdd5459579680811f1ececa8a1dc"
 
 [versions]
 fabric = "0.19.5"
