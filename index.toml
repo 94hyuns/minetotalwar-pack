@@ -12,10 +12,14 @@ metafile = true
 
 [[files]]
 file = "mods/minetotalwar.pw.toml"
-hash = "fe34f552dfdeec26d97e84d67e70e918efbdc926800b9744c63368816935dbc7"
+hash = "6f7ba040b6df0dfb155bc141858dbfb860cdb90a1f66961103808fc8d33a74c2"
 metafile = true
 
 [[files]]
 file = "mods/owo-lib.pw.toml"
 hash = "01cce2adecdc5e33fba69ff99c5a87f847733a0238f8e94ad2c9841cb26ec2ba"
 metafile = true
+
+[[files]]
+file = "patchnotes/1.0.43.md"
+hash = "4327cd66704d2fc3896fb06d285fb3238b8c8bf2a2975b7548d09d2dcc4b3912"
