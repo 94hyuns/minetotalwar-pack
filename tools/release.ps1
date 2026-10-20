@@ -19,10 +19,19 @@ $jarName = Split-Path -Leaf $Jar
 $mrpack = Get-ChildItem dist\*-$Version.mrpack | Select-Object -First 1
 if ($null -eq $mrpack) { throw "mrpack 이 생성되지 않음" }
 
-cmd /c "git add pack.toml index.toml mods 2>&1"
+# jar 를 먼저 릴리스에 올리고, 성공했을 때만 모드팩(pack.toml·mods)을 푸시한다.
+# 반대 순서면 업로드가 실패했을 때 모드팩이 없는 jar 를 가리켜 서버가 켜지지 못한다 (2026-10-20 v1.0.44 토큰 403)
+gh release create "v$Version" "dist\$jarName" $mrpack.FullName --title "영지전 $Version" --notes "영지전 모드 $Version. Prism(packwiz) 사용자는 자동 갱신, Modrinth 앱은 mrpack 다시 가져오기."
+if ($LASTEXITCODE -ne 0) {
+    cmd /c "git checkout -- pack.toml index.toml mods 2>&1"
+    throw "릴리스 만들기 실패 — 모드팩은 바꾸지 않았습니다(이전 버전 그대로)"
+}
+Write-Host "릴리스: https://github.com/$(gh repo view --json nameWithOwner -q .nameWithOwner)/releases/tag/v$Version"
+
+cmd /c "git add pack.toml index.toml mods patchnotes 2>&1"
 cmd /c "git commit -m v$Version 2>&1"
 cmd /c "git push 2>&1"
-if ($LASTEXITCODE -ne 0) { throw "git push 실패" }
+if ($LASTEXITCODE -ne 0) { throw "git push 실패 — 릴리스는 있으니 푸시만 다시 하면 됩니다" }
 
 # 패치노트를 디스코드 #서버공지로 (설계 §33, 2026-10-20 사용자: 커밋 메시지는 보기 힘듦 → 플레이어용 글)
 # 저장소의 patchnotes/<버전>.md 를 카드 하나로 올린다. 파일이 없으면 건너뛴다.
@@ -46,6 +55,5 @@ function Post-PatchNotes {
     }
 }
 
-gh release create "v$Version" "dist\$jarName" $mrpack.FullName --title "영지전 $Version" --notes "영지전 모드 $Version. Prism(packwiz) 사용자는 자동 갱신, Modrinth 앱은 mrpack 다시 가져오기."
-Write-Host "완료: https://github.com/$(gh repo view --json nameWithOwner -q .nameWithOwner)/releases/tag/v$Version"
 Post-PatchNotes -Version $Version
+Write-Host "완료: v$Version"
