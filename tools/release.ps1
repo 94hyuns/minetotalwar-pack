@@ -36,22 +36,27 @@ if ($LASTEXITCODE -ne 0) { throw "git push 실패 — 릴리스는 있으니 푸
 # 패치노트를 디스코드 #서버공지로 (설계 §33, 2026-10-20 사용자: 커밋 메시지는 보기 힘듦 → 플레이어용 글)
 # 저장소의 patchnotes/<버전>.md 를 카드 하나로 올린다. 파일이 없으면 건너뛴다.
 # 웹훅 주소는 저장소 밖 파일 %USERPROFILE%\.minetotalwar-discord-webhook (없으면 건너뜀)
+# 다중 길드 (설계 §33): 그 파일은 한 줄에 주소 하나 — 여러 줄이면 디스코드 서버마다 올린다. 실패는 주소 번호로만 알림(주소는 출력 안 함)
 function Post-PatchNotes {
     param([string]$Version)
     $hookFile = Join-Path $env:USERPROFILE ".minetotalwar-discord-webhook"
     $notesFile = Join-Path $root "patchnotes\$Version.md"
     if (-not (Test-Path $hookFile)) { Write-Host "디스코드 웹훅 파일이 없어 패치노트를 건너뜀: $hookFile"; return }
     if (-not (Test-Path $notesFile)) { Write-Host "패치노트 파일이 없어 건너뜀: $notesFile"; return }
-    $hook = (Get-Content $hookFile -Raw).Trim()
+    $hooks = @(Get-Content $hookFile -Encoding UTF8 | ForEach-Object { $_.Trim() } | Where-Object { $_ -and -not $_.StartsWith('#') })
+    if ($hooks.Count -eq 0) { Write-Host "디스코드 웹훅 파일에 주소가 없어 패치노트를 건너뜀: $hookFile"; return }
     $notes = (Get-Content $notesFile -Raw -Encoding UTF8).Trim()
     if ($notes.Length -gt 4000) { $notes = $notes.Substring(0, 4000) + "…" }
     $embed = @{ title = "📦 영지전 v$Version 업데이트"; description = $notes; color = 0x3498DB; timestamp = (Get-Date).ToUniversalTime().ToString("o") }
     $json = @{ embeds = @($embed); allowed_mentions = @{ parse = @() } } | ConvertTo-Json -Depth 5 -Compress
-    try {
-        Invoke-RestMethod -Uri $hook -Method Post -ContentType "application/json; charset=utf-8" -Body ([Text.Encoding]::UTF8.GetBytes($json)) | Out-Null
-        Write-Host "패치노트 게시: $notesFile"
-    } catch {
-        Write-Host "패치노트 게시 실패: $_"
+    for ($i = 0; $i -lt $hooks.Count; $i++) {
+        $label = if ($hooks.Count -gt 1) { " ($($i + 1)번 주소)" } else { "" }
+        try {
+            Invoke-RestMethod -Uri $hooks[$i] -Method Post -ContentType "application/json; charset=utf-8" -Body ([Text.Encoding]::UTF8.GetBytes($json)) | Out-Null
+            Write-Host "패치노트 게시${label}: $notesFile"
+        } catch {
+            Write-Host "패치노트 게시 실패${label}: $($_.Exception.Message)"
+        }
     }
 }
 
