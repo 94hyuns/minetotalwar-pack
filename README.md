@@ -13,31 +13,34 @@
 
 ---
 
-## 설치 (한 번만 하면 이후 업데이트는 자동)
+## 설치 (처음 한 번만, 이후 업데이트는 자동)
 
-**Prism Launcher** 를 씁니다. 게임을 켤 때마다 바뀐 모드를 자동으로 받습니다.
+**CurseForge 앱** 기준입니다. 영지전 모드는 게임을 켤 때 스스로 최신 버전으로 바뀌므로, 한 번 깔아 두면 그 뒤는 손댈 게 없습니다.
 
-1. [Prism Launcher](https://prismlauncher.org/download/) 를 설치하고 Microsoft 계정으로 로그인합니다.
-2. 왼쪽 위 **인스턴스 추가** → 이름 `영지전`, 버전 **1.21.11**, 모드 로더 **Fabric** 선택 → 확인.
-3. [packwiz-installer-bootstrap.jar](https://github.com/packwiz/packwiz-installer-bootstrap/releases/latest) 를 내려받습니다.
-4. 인스턴스를 오른쪽 클릭 → **폴더 열기** → `minecraft` 폴더(없으면 `.minecraft`) 안에 3번 파일을 넣습니다.
-5. 인스턴스를 오른쪽 클릭 → **편집** → **설정** → **사용자 지정 명령어** 체크 → **실행 전 명령어**에 아래 한 줄을 붙여 넣습니다.
+### 한 번에 가져오기 (준비 중)
 
-```
-"$INST_JAVA" -jar packwiz-installer-bootstrap.jar https://94hyuns.github.io/minetotalwar-pack/pack.toml
-```
+최신 [Release](https://github.com/94hyuns/minetotalwar-pack/releases/latest) 의 `minetotalwar-<버전>-curseforge.zip` 을 받아 CurseForge 앱 → **마인크래프트** → **사용자 지정 프로필 만들기** → **가져오기** 에서 고르면 끝. (이 파일이 릴리스에 없으면 아래 수동 설치로)
 
-6. **실행**. 첫 실행 때 모드를 받고 게임이 켜집니다. 이후에는 켤 때마다 바뀐 것만 받습니다.
+### 수동 설치
 
-### 다른 방법: Modrinth 앱 (업데이트는 수동)
+1. CurseForge 앱 → **마인크래프트** → **+ 사용자 지정 프로필 만들기**: 이름 `영지전`, 버전 **1.21.11**, 모드 로더 **Fabric** → 만들기.
+2. 프로필에서 **콘텐츠 추가** 로 세 가지를 설치합니다: **Fabric API**, **oωo (owo-lib)**, **GeckoLib**.
+3. 최신 [Release](https://github.com/94hyuns/minetotalwar-pack/releases/latest) 에서 `minetotalwar-<버전>.jar` 를 받습니다.
+4. 프로필 오른쪽 **⋯** → **폴더 열기** → `mods` 폴더에 3번 jar 를 넣습니다.
+5. **플레이**. 처음 켤 때 모드가 최신인지 확인하고, 다르면 받아서 게임을 한 번 다시 띄웁니다("켜지다 꺼지고 10~20초 뒤 다시 켜짐"은 정상).
 
-[Modrinth App](https://modrinth.com/app) → **+** → **파일에서 가져오기** → 최신 [Release](https://github.com/94hyuns/minetotalwar-pack/releases/latest) 의 `minetotalwar-<버전>.mrpack`.
-모드가 바뀌면 새 mrpack 을 받아 다시 가져와야 합니다. 그래서 Prism 방식을 권장합니다.
+선택: **JourneyMap** 을 같이 깔면 지도를 쓸 수 있습니다(서버가 지원, 동굴 지도는 꺼져 있음). Sodium·Iris 같은 성능·셰이더 모드는 자유.
+
+### 다른 런처
+
+- **Prism Launcher**: 인스턴스 추가(1.21.11, Fabric) 뒤 `minecraft` 폴더에 [packwiz-installer-bootstrap.jar](https://github.com/packwiz/packwiz-installer-bootstrap/releases/latest) 를 넣고, 편집 → 설정 → 사용자 지정 명령어 → 실행 전 명령어에 `"$INST_JAVA" -jar packwiz-installer-bootstrap.jar https://94hyuns.github.io/minetotalwar-pack/pack.toml`. 켤 때마다 라이브러리까지 자동 갱신.
+- **Modrinth 앱**: **+** → **파일에서 가져오기** → 최신 Release 의 `minetotalwar-<버전>.mrpack`. 영지전 모드는 자동 갱신, 라이브러리가 바뀌면 새 mrpack 을 다시 가져오기.
 
 ### 문제가 생기면
 
-- 서버에 들어갈 때 "영지전 모드 업데이트가 필요합니다"가 뜨면: Prism 은 게임을 껐다 켜면 됩니다. Modrinth 앱은 새 mrpack 을 받습니다.
-- 실행 전 명령어가 실패하면 Java 가 없거나 인터넷 문제입니다. Prism 설정 → Java 에서 Java 21 이 잡혀 있는지 확인하세요.
+- 접속할 때 "영지전 모드 버전이 다릅니다"가 뜨면 게임을 껐다 켜세요. 켤 때 자동으로 받습니다.
+- 게임이 안 켜지고 "모드가 중복" 같은 말이 나오면 `mods` 폴더에 `minetotalwar-*.jar` 가 둘 이상인지 확인하고 옛 것을 지우세요.
+- Fabric API·owo-lib·GeckoLib 가 없다는 말이 나오면 2번의 세 모드를 다시 확인하세요.
 
 ---
 
