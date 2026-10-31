@@ -18,10 +18,12 @@ if ($LASTEXITCODE -ne 0) { throw "build_pack.py 실패" }
 $jarName = Split-Path -Leaf $Jar
 $mrpack = Get-ChildItem dist\*-$Version.mrpack | Select-Object -First 1
 if ($null -eq $mrpack) { throw "mrpack 이 생성되지 않음" }
+$cfzip = "dist\minetotalwar-$Version-curseforge.zip"
+if (-not (Test-Path $cfzip)) { throw "CurseForge zip 이 생성되지 않음" }
 
 # jar 를 먼저 릴리스에 올리고, 성공했을 때만 모드팩(pack.toml·mods)을 푸시한다.
 # 반대 순서면 업로드가 실패했을 때 모드팩이 없는 jar 를 가리켜 서버가 켜지지 못한다 (2026-10-20 v1.0.44 토큰 403)
-gh release create "v$Version" "dist\$jarName" $mrpack.FullName --title "영지전 $Version" --notes "영지전 모드 $Version. Prism(packwiz) 사용자는 자동 갱신, Modrinth 앱은 mrpack 다시 가져오기."
+gh release create "v$Version" "dist\$jarName" $mrpack.FullName $cfzip --title "영지전 $Version" --notes "영지전 모드 $Version. CurseForge 앱: -curseforge.zip 을 사용자 지정 프로필 가져오기. Prism(packwiz)·Modrinth 앱도 지원. 영지전 모드는 게임을 켤 때 자동 갱신"
 if ($LASTEXITCODE -ne 0) {
     cmd /c "git checkout -- pack.toml index.toml mods 2>&1"
     throw "릴리스 만들기 실패 — 모드팩은 바꾸지 않았습니다(이전 버전 그대로)"

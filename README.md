@@ -17,9 +17,9 @@
 
 **CurseForge 앱** 기준입니다. 영지전 모드는 게임을 켤 때 스스로 최신 버전으로 바뀌므로, 한 번 깔아 두면 그 뒤는 손댈 게 없습니다.
 
-### 한 번에 가져오기 (준비 중)
+### 한 번에 가져오기
 
-최신 [Release](https://github.com/94hyuns/minetotalwar-pack/releases/latest) 의 `minetotalwar-<버전>-curseforge.zip` 을 받아 CurseForge 앱 → **마인크래프트** → **사용자 지정 프로필 만들기** → **가져오기** 에서 고르면 끝. (이 파일이 릴리스에 없으면 아래 수동 설치로)
+최신 [Release](https://github.com/94hyuns/minetotalwar-pack/releases/latest) 의 `minetotalwar-<버전>-curseforge.zip` 을 받아 CurseForge 앱 → **마인크래프트** → **사용자 지정 프로필 만들기** → **가져오기** 에서 고르면 끝.
 
 ### 수동 설치
 

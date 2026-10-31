@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""영지전 모드팩 빌드 스크립트 (packwiz 형식 + Modrinth .mrpack).
+"""영지전 모드팩 빌드 스크립트 (packwiz 형식 + Modrinth .mrpack + CurseForge zip).
 
 사용:
   python tools/build_pack.py                      # pack.toml/index.toml 해시 갱신 + dist/*.mrpack 생성
@@ -152,6 +152,39 @@ def build_mrpack():
     print(f"mrpack: {out} ({len(files)}개 모드)")
 
 
+def build_curseforge_zip():
+    """CurseForge 앱 "사용자 지정 프로필 가져오기"용 zip. 의존 모드는 CurseForge 파일 번호로, 영지전 jar 는 overrides/mods 에 넣는다."""
+    pack = read(os.path.join(ROOT, "pack.toml"))
+    version = toml_get(pack, "version")
+    deps = json.load(open(os.path.join(ROOT, "tools", "curseforge_deps.json"), encoding="utf-8"))
+    jar_name = toml_get(read(os.path.join(MODS, "minetotalwar.pw.toml")), "filename")
+    jar = os.path.join(DIST, jar_name)
+    if not os.path.isfile(jar):
+        sys.exit(f"zip 에 넣을 영지전 jar 가 dist/ 에 없음: 먼저 --jar 로 갱신하세요 ({jar})")
+    manifest = {
+        "minecraft": {"version": MINECRAFT, "modLoaders": [{"id": f"fabric-{FABRIC_LOADER}", "primary": True}]},
+        "manifestType": "minecraftModpack", "manifestVersion": 1,
+        "name": PACK_NAME, "version": version, "author": GITHUB_USER,
+        "files": [{"projectID": d["projectID"], "fileID": d["fileID"], "required": True} for d in deps.values()],
+        "overrides": "overrides",
+    }
+    items = "".join(f'<li><a href="https://www.curseforge.com/projects/{d["projectID"]}">{d["name"]}</a></li>\n' for d in deps.values())
+    modlist = f"<ul>\n{items}<li>영지전 {version} (overrides/mods)</li>\n</ul>\n"
+    os.makedirs(DIST, exist_ok=True)
+    out = os.path.join(DIST, f"minetotalwar-{version}-curseforge.zip")
+    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
+        z.writestr("manifest.json", json.dumps(manifest, ensure_ascii=False, indent=2))
+        z.writestr("modlist.html", modlist)
+        z.write(jar, f"overrides/mods/{jar_name}")
+        overrides = os.path.join(ROOT, "overrides")
+        if os.path.isdir(overrides):
+            for dirpath, _, names in os.walk(overrides):
+                for nm in names:
+                    full = os.path.join(dirpath, nm)
+                    z.write(full, "overrides/" + os.path.relpath(full, overrides).replace(os.sep, "/"))
+    print(f"curseforge zip: {out} ({len(deps)}개 의존 모드 + 영지전 jar)")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--jar", help="새 영지전 jar 경로")
@@ -163,6 +196,7 @@ def main():
         update_mod_jar(a.jar, a.version)
     refresh_index()
     build_mrpack()
+    build_curseforge_zip()
 
 
 if __name__ == "__main__":
