@@ -120,7 +120,9 @@ def build_mrpack():
         t = read(os.path.join(MODS, n))
         filename = toml_get(t, "filename")
         url = toml_get(t, "url", "download")
-        entry = {"path": f"mods/{filename}", "hashes": {}, "env": {"client": "required", "server": "required"}, "downloads": [url]}
+        # side = "client" 인 모드(JEI 등)는 서버에 깔지 않는다
+        server_env = "unsupported" if toml_get(t, "side") == "client" else "required"
+        entry = {"path": f"mods/{filename}", "hashes": {}, "env": {"client": "required", "server": server_env}, "downloads": [url]}
         slug = n[:-len(".pw.toml")]
         if slug in deps:
             d = deps[slug]

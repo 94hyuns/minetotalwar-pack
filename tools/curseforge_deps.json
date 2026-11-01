@@ -1,5 +1,9 @@
 {
  "fabric-api": {"projectID": 306612, "fileID": 8525513, "name": "Fabric API", "filename": "fabric-api-0.141.6+1.21.11.jar"},
  "owo-lib": {"projectID": 532610, "fileID": 7557686, "name": "owo-lib", "filename": "owo-lib-0.13.0+1.21.11.jar"},
- "geckolib": {"projectID": 388172, "fileID": 7705305, "name": "GeckoLib", "filename": "geckolib-fabric-1.21.11-5.4.5.jar"}
+ "geckolib": {"projectID": 388172, "fileID": 7705305, "name": "GeckoLib", "filename": "geckolib-fabric-1.21.11-5.4.5.jar"},
+ "travelersbackpack": {"projectID": 541171, "fileID": 8788890, "name": "Traveler's Backpack", "filename": "travelersbackpack-fabric-1.21.11-10.11.11.jar"},
+ "forge-config-api-port": {"projectID": 547434, "fileID": 7337130, "name": "Forge Config API Port", "filename": "ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar"},
+ "jei": {"projectID": 238222, "fileID": 9144081, "name": "Just Enough Items (JEI)", "filename": "jei-1.21.11-fabric-27.48.0.106.jar"},
+ "mezz-config": {"projectID": 1689768, "fileID": 9374031, "name": "MezzConfig", "filename": "mezz_config-1.21.11-fabric-0.6.10.jar"}
 }

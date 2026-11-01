@@ -39,5 +39,77 @@
   "sha512": "e3fec3a07fd2a39af287cfa682f531913a6b82af5c23b60a231e8586ed1c5b1d2857f6714fa069315a1d7366c0d148d167178a9531b59629d488eb1cace6c97e",
   "size": 822664,
   "deps": []
+ },
+ "travelersbackpack": {
+  "project_id": "rlloIFEV",
+  "title": "Traveler's Backpack",
+  "version_id": "7ltEXeO3",
+  "version_number": "1.21.11-10.11.11",
+  "filename": "travelersbackpack-fabric-1.21.11-10.11.11.jar",
+  "url": "https://cdn.modrinth.com/data/rlloIFEV/versions/7ltEXeO3/travelersbackpack-fabric-1.21.11-10.11.11.jar",
+  "sha1": "bced1552f2db5e49cf25f6059b6839b24e9ebfec",
+  "sha512": "cbd16e0984262a2e9d546eeebcf4e20347e88325acf7f7f1e6b951b6bcf6ff42a0c62fcfbb1f328610e8216bc5653446805dcef56bf9adce5e590a7a7ece468a",
+  "size": 1597574,
+  "deps": [
+   [
+    "P7dR8mSH",
+    "required"
+   ],
+   [
+    "ohNO6lps",
+    "required"
+   ]
+  ]
+ },
+ "forge-config-api-port": {
+  "project_id": "ohNO6lps",
+  "title": "Forge Config API Port",
+  "version_id": "uXrWPsCu",
+  "version_number": "21.11.1",
+  "filename": "ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar",
+  "url": "https://cdn.modrinth.com/data/ohNO6lps/versions/uXrWPsCu/ForgeConfigAPIPort-v21.11.1-mc1.21.11-Fabric.jar",
+  "sha1": "61aa1b5fafd75afc44552d0213cac39bc938bc2d",
+  "sha512": "28791c992d613da14b8685505d3ef632ed53b5f1e1d517f0b41677d10f8419f192dfbde991308df6cda5d0f113c0aa8fc18ecf4a0834029403b16d2f68dc52d6",
+  "size": 598009,
+  "deps": [
+   [
+    "P7dR8mSH",
+    "required"
+   ]
+  ]
+ },
+ "jei": {
+  "project_id": "u6dRKJwZ",
+  "title": "Just Enough Items (JEI)",
+  "version_id": "iykoWl1k",
+  "version_number": "27.48.0.106",
+  "filename": "jei-1.21.11-fabric-27.48.0.106.jar",
+  "url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/iykoWl1k/jei-1.21.11-fabric-27.48.0.106.jar",
+  "sha1": "64d19fcf2899a3042c701ba1ca15f2a63268c262",
+  "sha512": "f747dec422e110fdec26033921b01f52b3dc16f3a307ba1e97634fb2d51fb526d4029383c571949668e9e851927039c30aeda02ec4a7b5323d7c9ecc0899a775",
+  "size": 2419982,
+  "deps": [
+   [
+    "7tEfOcA7",
+    "required"
+   ]
+  ]
+ },
+ "mezz-config": {
+  "project_id": "7tEfOcA7",
+  "title": "MezzConfig",
+  "version_id": "PBqd6SbE",
+  "version_number": "0.6.10",
+  "filename": "mezz_config-1.21.11-fabric-0.6.10.jar",
+  "url": "https://cdn.modrinth.com/data/7tEfOcA7/versions/PBqd6SbE/mezz_config-1.21.11-fabric-0.6.10.jar",
+  "sha1": "7c1b662c61626f93a4646771c0260f3b44b4c8c3",
+  "sha512": "4e6adfd786a48611583a3465e67018809d9f940ad01fe0fb99c5c77c03cc3b44abe98334be6ad4a4241349838b52313ee422d88a088f5953df96dc1ae6f9e564",
+  "size": 394196,
+  "deps": [
+   [
+    "P7dR8mSH",
+    "required"
+   ]
+  ]
  }
 }

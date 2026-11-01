@@ -8,6 +8,10 @@
 | Fabric API | 필수 라이브러리 |
 | owo-lib | 내정 화면 GUI 라이브러리 |
 | GeckoLib | 보스 몬스터 모델 |
+| Traveler's Backpack | 가방 (서버에 있어 필수) |
+| Forge Config API Port | Traveler's Backpack 이 쓰는 라이브러리 |
+| JEI (Just Enough Items) | 레시피 보기 (선택, 클라이언트만) |
+| MezzConfig | JEI 가 쓰는 라이브러리 |
 
 리소스팩은 따로 없습니다. 테마·글꼴·사운드는 모드 안에 들어 있습니다.
 
@@ -24,7 +28,7 @@
 ### 수동 설치
 
 1. CurseForge 앱 → **마인크래프트** → **+ 사용자 지정 프로필 만들기**: 이름 `영지전`, 버전 **1.21.11**, 모드 로더 **Fabric** → 만들기.
-2. 프로필에서 **콘텐츠 추가** 로 세 가지를 설치합니다: **Fabric API**, **oωo (owo-lib)**, **GeckoLib**.
+2. 프로필에서 **콘텐츠 추가** 로 다섯 가지를 설치합니다: **Fabric API**, **oωo (owo-lib)**, **GeckoLib**, **Traveler's Backpack [Fabric]**, **Forge Config API Port**. 레시피를 보려면 **JEI** 도(선택).
 3. 최신 [Release](https://github.com/94hyuns/minetotalwar-pack/releases/latest) 에서 `minetotalwar-<버전>.jar` 를 받습니다.
 4. 프로필 오른쪽 **⋯** → **폴더 열기** → `mods` 폴더에 3번 jar 를 넣습니다.
 5. **플레이**. 처음 켤 때 모드가 최신인지 확인하고, 다르면 받아서 게임을 한 번 다시 띄웁니다("켜지다 꺼지고 10~20초 뒤 다시 켜짐"은 정상).
@@ -40,7 +44,7 @@
 
 - 접속할 때 "영지전 모드 버전이 다릅니다"가 뜨면 게임을 껐다 켜세요. 켤 때 자동으로 받습니다.
 - 게임이 안 켜지고 "모드가 중복" 같은 말이 나오면 `mods` 폴더에 `minetotalwar-*.jar` 가 둘 이상인지 확인하고 옛 것을 지우세요.
-- Fabric API·owo-lib·GeckoLib 가 없다는 말이 나오면 2번의 세 모드를 다시 확인하세요.
+- Fabric API·owo-lib·GeckoLib·Traveler's Backpack·Forge Config API Port 가 없다는 말이 나오거나 접속이 거절되면 2번의 다섯 모드를 다시 확인하세요.
 
 ---
 
