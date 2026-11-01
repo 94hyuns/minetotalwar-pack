@@ -1,0 +1,13 @@
+name = "Just Enough Items (JEI)"
+filename = "jei-1.21.11-fabric-27.48.0.106.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/u6dRKJwZ/versions/iykoWl1k/jei-1.21.11-fabric-27.48.0.106.jar"
+hash-format = "sha512"
+hash = "f747dec422e110fdec26033921b01f52b3dc16f3a307ba1e97634fb2d51fb526d4029383c571949668e9e851927039c30aeda02ec4a7b5323d7c9ecc0899a775"
+
+[update]
+[update.modrinth]
+mod-id = "u6dRKJwZ"
+version = "iykoWl1k"
