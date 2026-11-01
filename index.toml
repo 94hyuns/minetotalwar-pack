@@ -122,7 +122,7 @@ hash = "77db18547485ff28d2de1ebab12285a66b0a26f0df9a7d6bbec0af64690f980f"
 
 [[files]]
 file = "patchnotes/1.1.8.md"
-hash = "60e7927138ed319b5c219a78050855cf7efbb3e19311f09388d86a62f89e8827"
+hash = "13235c95fa3fec11c5a771d2524a262b139859b85e749e7920112a2bc74ccc8a"
 
 [[files]]
 file = "patchnotes/1.1.9.md"
