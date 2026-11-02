@@ -27,7 +27,7 @@ metafile = true
 
 [[files]]
 file = "mods/minetotalwar.pw.toml"
-hash = "5f1399c04251e40afa15c0ffdb33c03f9c94c6cb6e18b413f23ee140fe15401d"
+hash = "53307065f7160714b7d2ee950ce5f6384333e9d32a7827d094ef860e787f6b1a"
 metafile = true
 
 [[files]]
@@ -163,6 +163,10 @@ hash = "df42ebab8d1bce2263288d7e24cb38c23e45033356e53f7f2ee18b764a46592d"
 [[files]]
 file = "patchnotes/1.2.2.md"
 hash = "b5d85d0ad08e1ea1481fbc4ff779ad87a027f58d92a2447f1fb20ab17fe7a895"
+
+[[files]]
+file = "patchnotes/1.2.3.md"
+hash = "82b769e32e49dcac3a5429a5f0e194b33ac57df390a3d0c12cc820be9170a650"
 
 [[files]]
 file = "patchnotes/open-2026-10-30.md"
