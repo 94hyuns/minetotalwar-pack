@@ -195,3 +195,8 @@ hash = "72d2369810d26b0bd22f8a2205177da4f7e30859ad6ba57809f6b16d66a9602f"
 [[files]]
 file = "patchnotes/open-2026-10-30.md"
 hash = "b66e9d732b42ab8cbcb825be80e4b7abed95bafc28eac738406c878359f80a36"
+
+[[files]]
+file = "resourcepacks/nongko-fantasy-weapons.pw.toml"
+hash = "f44c892d0e4983f618213f827a083df6537f9d216d8130ecd9c6d02d172ed8a8"
+metafile = true

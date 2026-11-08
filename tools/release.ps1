@@ -30,7 +30,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 Write-Host "릴리스: https://github.com/$(gh repo view --json nameWithOwner -q .nameWithOwner)/releases/tag/v$Version"
 
-cmd /c "git add pack.toml index.toml mods patchnotes 2>&1"
+cmd /c "git add pack.toml index.toml mods resourcepacks patchnotes 2>&1"
 cmd /c "git commit -m v$Version 2>&1"
 cmd /c "git push 2>&1"
 if ($LASTEXITCODE -ne 0) { throw "git push 실패 — 릴리스는 있으니 푸시만 다시 하면 됩니다" }

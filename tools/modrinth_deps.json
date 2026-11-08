@@ -13,7 +13,7 @@
  },
  "owo-lib": {
   "project_id": "ccKDOlHs",
-  "title": "o\u03c9o (owo-lib)",
+  "title": "oωo (owo-lib)",
   "version_id": "33Ei8Thm",
   "version_number": "0.13.0+1.21.11",
   "filename": "owo-lib-0.13.0+1.21.11.jar",
@@ -111,5 +111,17 @@
     "required"
    ]
   ]
+ },
+ "nongko-fantasy-weapons": {
+  "project_id": "4XVKh1GK",
+  "title": "Nongko's Fantasy Weapons (resource pack)",
+  "version_id": "SnGyYk9h",
+  "version_number": "1.19A",
+  "filename": "nongko's_Fantasy_Weapons_v1.19A.zip",
+  "url": "https://cdn.modrinth.com/data/4XVKh1GK/versions/SnGyYk9h/nongko%27s_Fantasy_Weapons_v1.19A.zip",
+  "sha1": "bf24b4bcfb2fbcf35abad74b526ec3833beab6d5",
+  "sha512": "e2c30144897ead1bf229dec98668290862f1a27984f9308b34d01a83ac9daed205a8d7784383921b5e5f8fe0dea010e922f3bc97680ca796aa7e9a47a7cfbbdf",
+  "size": 1669428,
+  "deps": []
  }
 }

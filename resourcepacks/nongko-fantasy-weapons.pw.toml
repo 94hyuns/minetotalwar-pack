@@ -1,0 +1,13 @@
+name = "Nongko's Fantasy Weapons (유물 무기 외형, 참조만)"
+filename = "nongko's_Fantasy_Weapons_v1.19A.zip"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/4XVKh1GK/versions/SnGyYk9h/nongko%27s_Fantasy_Weapons_v1.19A.zip"
+hash-format = "sha512"
+hash = "e2c30144897ead1bf229dec98668290862f1a27984f9308b34d01a83ac9daed205a8d7784383921b5e5f8fe0dea010e922f3bc97680ca796aa7e9a47a7cfbbdf"
+
+[update]
+[update.modrinth]
+mod-id = "4XVKh1GK"
+version = "SnGyYk9h"

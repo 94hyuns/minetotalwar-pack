@@ -108,33 +108,42 @@ def refresh_index():
     print(f"index.toml: {len(files)}개 파일, pack.toml 해시 갱신")
 
 
+def mrpack_entry(folder, folder_path, n, deps):
+    t = read(os.path.join(folder_path, n))
+    filename = toml_get(t, "filename")
+    url = toml_get(t, "url", "download")
+    # side = "client" 인 것(JEI·리소스팩 등)은 서버에 깔지 않는다
+    server_env = "unsupported" if toml_get(t, "side") == "client" else "required"
+    entry = {"path": f"{folder}/{filename}", "hashes": {}, "env": {"client": "required", "server": server_env}, "downloads": [url]}
+    slug = n[:-len(".pw.toml")]
+    if slug in deps:
+        d = deps[slug]
+        entry["hashes"] = {"sha1": d["sha1"], "sha512": d["sha512"]}
+        entry["fileSize"] = d["size"]
+    else:
+        local = os.path.join(DIST, filename)
+        if not os.path.isfile(local):
+            sys.exit(f"mrpack 에 넣을 영지전 jar 가 dist/ 에 없음: 먼저 --jar 로 갱신하세요 ({local})")
+        entry["hashes"] = {"sha1": sha(local, "sha1"), "sha512": sha(local, "sha512")}
+        entry["fileSize"] = os.path.getsize(local)
+    return entry
+
+
 def build_mrpack():
     """mods/*.pw.toml 을 읽어 Modrinth 모드팩(.mrpack)을 만든다. 영지전 jar 는 GitHub Release 주소를 그대로 쓴다."""
     pack = read(os.path.join(ROOT, "pack.toml"))
     version = toml_get(pack, "version")
     deps = json.load(open(os.path.join(ROOT, "tools", "modrinth_deps.json"), encoding="utf-8"))
     files = []
-    for n in sorted(os.listdir(MODS)):
-        if not n.endswith(".pw.toml"):
+    # resourcepacks/*.pw.toml 은 Modrinth 에서 내려받는 리소스팩(재배포 안 함, 참조만). 해시·크기는 modrinth_deps.json 에
+    for folder in ("mods", "resourcepacks"):
+        folder_path = os.path.join(ROOT, folder)
+        if not os.path.isdir(folder_path):
             continue
-        t = read(os.path.join(MODS, n))
-        filename = toml_get(t, "filename")
-        url = toml_get(t, "url", "download")
-        # side = "client" 인 모드(JEI 등)는 서버에 깔지 않는다
-        server_env = "unsupported" if toml_get(t, "side") == "client" else "required"
-        entry = {"path": f"mods/{filename}", "hashes": {}, "env": {"client": "required", "server": server_env}, "downloads": [url]}
-        slug = n[:-len(".pw.toml")]
-        if slug in deps:
-            d = deps[slug]
-            entry["hashes"] = {"sha1": d["sha1"], "sha512": d["sha512"]}
-            entry["fileSize"] = d["size"]
-        else:
-            local = os.path.join(DIST, filename)
-            if not os.path.isfile(local):
-                sys.exit(f"mrpack 에 넣을 영지전 jar 가 dist/ 에 없음: 먼저 --jar 로 갱신하세요 ({local})")
-            entry["hashes"] = {"sha1": sha(local, "sha1"), "sha512": sha(local, "sha512")}
-            entry["fileSize"] = os.path.getsize(local)
-        files.append(entry)
+        for n in sorted(os.listdir(folder_path)):
+            if not n.endswith(".pw.toml"):
+                continue
+            files.append(mrpack_entry(folder, folder_path, n, deps))
     index = {
         "formatVersion": 1, "game": "minecraft", "versionId": version, "name": PACK_NAME,
         "summary": "영지전 서버 접속용 모드팩 (Fabric)",
